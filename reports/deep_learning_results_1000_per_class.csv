@@ -1,0 +1,8 @@
+model,val_accuracy,val_macro_f1,notes
+Majority baseline,,,Fill from 1000-per-class classical baseline rerun
+Pixels + Logistic Regression,,,Fill from 1000-per-class classical baseline rerun
+HOG + Linear SVM,,,Fill from 1000-per-class classical baseline rerun
+HOG + color histograms + Linear SVM,,,Fill from 1000-per-class classical baseline rerun
+Small CNN from scratch,0.4466666579246521,,Learned from scratch
+Frozen MobileNetV2,0.7,0.7013636378548516,Pretrained feature extractor
+Fine-tuned MobileNetV2,0.7316666666666667,0.7340823769601881,Best validation model

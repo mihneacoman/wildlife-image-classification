@@ -1,0 +1,37 @@
+# virtual environments
+.venv/
+.venv-md/
+.venv-metal/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# data artifacts
+data/raw/
+data/processed/
+data/metadata/all_images.csv
+data/metadata/nacti_metadata*.json
+data/metadata/nacti_metadata*.json.zip
+
+# trained model artifacts
+models/
+*.h5
+*.keras
+
+# bulky detector outputs
+reports/megadetector/
+reports/megadetector_val_image_paths.txt
+reports/megadetector_val_results.json
+
+# OS
+.DS_Store

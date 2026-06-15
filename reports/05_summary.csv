@@ -1,0 +1,4 @@
+section,result
+best_model_validation,"accuracy=0.7217, macro_f1=0.7249"
+lighting_groups,"night_or_low_light: n=546, acc=0.681; grayscale_or_ir: n=116, acc=0.716; low_light: n=176, acc=0.716; day_or_normal_light: n=362, acc=0.787"
+megadetector_available,not available yet; run MegaDetector and rerun sections 8-10

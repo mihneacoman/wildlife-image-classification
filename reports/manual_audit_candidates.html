@@ -1,0 +1,4016 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manual Audit Candidates</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #18202a;
+      --muted: #657181;
+      --line: #d9dee6;
+      --accent: #1d6f5f;
+      --soft: #edf5f3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      padding: 24px 28px 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+    h1, h2, p { margin: 0; }
+    h1 { font-size: 24px; }
+    .summary {
+      margin-top: 6px;
+      color: var(--muted);
+    }
+    .reference {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcfd;
+    }
+    .reference h3 {
+      margin: 0 0 8px;
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .chip {
+      padding: 3px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+      white-space: nowrap;
+      font-size: 12px;
+    }
+    main { padding: 22px 28px 34px; }
+    .source-group + .source-group { margin-top: 30px; }
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+    h2 span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      background: #111820;
+    }
+    .content { padding: 10px 12px 12px; }
+    .audit-id {
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+    .meta {
+      display: grid;
+      gap: 5px;
+      margin: 0;
+    }
+    .meta div {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 8px;
+    }
+    dt {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    dd {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+    .annotation {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+    }
+    .annotation div {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 8px;
+      min-height: 24px;
+      align-items: center;
+    }
+    .annotation span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .annotation strong {
+      min-height: 24px;
+      padding: 3px 7px;
+      border: 1px dashed #adb6c2;
+      border-radius: 6px;
+      background: var(--soft);
+      font-weight: 500;
+    }
+    @media (max-width: 680px) {
+      header, .reference, main { padding-left: 14px; padding-right: 14px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Manual Audit Candidates</h1>
+    <p class="summary">190 examples generated from /Users/mihnea/Desktop/Proiecte personale/wildlife-image-classification/reports/manual_audit_candidates.csv on 2026-06-15 17:43</p>
+  </header>
+  <aside class="reference">
+    <div>
+      <h3>Suggested audit_tag values</h3>
+      <div class="chips"><span class="chip">clear_model_error</span>
+<span class="chip">ambiguous</span>
+<span class="chip">possible_label_noise</span>
+<span class="chip">animal_too_small</span>
+<span class="chip">animal_hidden_or_occluded</span>
+<span class="chip">non_target_animal</span>
+<span class="chip">visually_similar_species</span>
+<span class="chip">partial_body</span>
+<span class="chip">bad_lighting_or_night_image</span>
+<span class="chip">background_confusion</span></div>
+    </div>
+    <div>
+      <h3>Suggested animal_visible values</h3>
+      <div class="chips"><span class="chip">clear</span>
+<span class="chip">barely_visible</span>
+<span class="chip">not_visible</span>
+<span class="chip">uncertain</span></div>
+    </div>
+  </aside>
+  <main>
+    
+            <section class="source-group">
+              <h2>bobcat_to_raccoon <span>13 examples</span></h2>
+              <div class="grid">
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub134/FL-05_07_28_2015_FL-05_0021699.jpg" alt="Audit image FL-05_07_28_2015_FL-05_0021699.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-05_07_28_2015_FL-05_0021699.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8180</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.0803)</dd></div>
+              <div><dt>Margin</dt><dd>0.7376</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub280/FL-38_03_07_2016_FL-38_0028393.JPG" alt="Audit image FL-38_03_07_2016_FL-38_0028393.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-38_03_07_2016_FL-38_0028393.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7841</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1046)</dd></div>
+              <div><dt>Margin</dt><dd>0.6795</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub268/FL-33_03_07_2016_FL-33_0010754.JPG" alt="Audit image FL-33_03_07_2016_FL-33_0010754.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-33_03_07_2016_FL-33_0010754.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7651</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.2174)</dd></div>
+              <div><dt>Margin</dt><dd>0.5477</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub178/FL-12_11_02_2015_FL-12_0019462.jpg" alt="Audit image FL-12_11_02_2015_FL-12_0019462.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-12_11_02_2015_FL-12_0019462.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7518</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.0977)</dd></div>
+              <div><dt>Margin</dt><dd>0.6541</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub279/FL-37_11_03_2015_FL-37_0000565.jpg" alt="Audit image FL-37_11_03_2015_FL-37_0000565.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-37_11_03_2015_FL-37_0000565.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7429</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1476)</dd></div>
+              <div><dt>Margin</dt><dd>0.5952</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub277/FL-37_04_04_2016_FL-37_0010240.JPG" alt="Audit image FL-37_04_04_2016_FL-37_0010240.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-37_04_04_2016_FL-37_0010240.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7256</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1187)</dd></div>
+              <div><dt>Margin</dt><dd>0.6070</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub059/CA-19_04_06_2015_CA-19_0001192.jpg" alt="Audit image CA-19_04_06_2015_CA-19_0001192.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-19_04_06_2015_CA-19_0001192.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6993</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.2602)</dd></div>
+              <div><dt>Margin</dt><dd>0.4391</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub187/FL-14_08_04_2016_FL-14_0028198.JPG" alt="Audit image FL-14_08_04_2016_FL-14_0028198.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-14_08_04_2016_FL-14_0028198.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6790</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1233)</dd></div>
+              <div><dt>Margin</dt><dd>0.5557</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub285/FL-40_11_03_2015_FL-40_0002224.jpg" alt="Audit image FL-40_11_03_2015_FL-40_0002224.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-40_11_03_2015_FL-40_0002224.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6430</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1878)</dd></div>
+              <div><dt>Margin</dt><dd>0.4552</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub283/FL-39_06_03_2016_FL-39_0009465.JPG" alt="Audit image FL-39_06_03_2016_FL-39_0009465.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-39_06_03_2016_FL-39_0009465.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5750</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.4184)</dd></div>
+              <div><dt>Margin</dt><dd>0.1566</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub237/FL-25_03_07_2016_FL-25_0020292.JPG" alt="Audit image FL-25_03_07_2016_FL-25_0020292.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-25_03_07_2016_FL-25_0020292.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5504</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.3089)</dd></div>
+              <div><dt>Margin</dt><dd>0.2415</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub277/FL-37_03_08_2016_FL-37_0008163.JPG" alt="Audit image FL-37_03_08_2016_FL-37_0008163.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-37_03_08_2016_FL-37_0008163.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5411</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.3303)</dd></div>
+              <div><dt>Margin</dt><dd>0.2108</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub186/FL-14_03_07_2016_FL-14_0018579.JPG" alt="Audit image FL-14_03_07_2016_FL-14_0018579.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-14_03_07_2016_FL-14_0018579.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5173</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.4815)</dd></div>
+              <div><dt>Margin</dt><dd>0.0359</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    </div>
+            </section>
+            
+            <section class="source-group">
+              <h2>coyote_to_raccoon <span>14 examples</span></h2>
+              <div class="grid">
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub279/FL-37_09_08_2016_FL-37_0028728.JPG" alt="Audit image FL-37_09_08_2016_FL-37_0028728.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-37_09_08_2016_FL-37_0028728.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8039</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.0976)</dd></div>
+              <div><dt>Margin</dt><dd>0.7063</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub241/FL-27_05_02_2016_FL-27_0055649.JPG" alt="Audit image FL-27_05_02_2016_FL-27_0055649.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-27_05_02_2016_FL-27_0055649.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7998</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.0788)</dd></div>
+              <div><dt>Margin</dt><dd>0.7210</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub217/FL-21_06_30_2015_FL-21_0004553.jpg" alt="Audit image FL-21_06_30_2015_FL-21_0004553.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-21_06_30_2015_FL-21_0004553.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7246</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1611)</dd></div>
+              <div><dt>Margin</dt><dd>0.5635</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub041/CA-08_08_04_2015_CA-08_0001858.jpg" alt="Audit image CA-08_08_04_2015_CA-08_0001858.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-08_08_04_2015_CA-08_0001858.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6633</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.2341)</dd></div>
+              <div><dt>Margin</dt><dd>0.4292</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub221/FL-22_05_02_2016_FL-22_0100603.JPG" alt="Audit image FL-22_05_02_2016_FL-22_0100603.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-22_05_02_2016_FL-22_0100603.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6506</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1205)</dd></div>
+              <div><dt>Margin</dt><dd>0.5301</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub280/FL-38_03_07_2016_FL-38_0028676.JPG" alt="Audit image FL-38_03_07_2016_FL-38_0028676.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-38_03_07_2016_FL-38_0028676.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6099</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.2507)</dd></div>
+              <div><dt>Margin</dt><dd>0.3592</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub241/FL-27_05_02_2016_FL-27_0056185.JPG" alt="Audit image FL-27_05_02_2016_FL-27_0056185.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-27_05_02_2016_FL-27_0056185.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6093</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1412)</dd></div>
+              <div><dt>Margin</dt><dd>0.4681</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub235/FL-24_06_30_2015_FL-24_0028739.jpg" alt="Audit image FL-24_06_30_2015_FL-24_0028739.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-24_06_30_2015_FL-24_0028739.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5768</dd></div>
+              <div><dt>Top 2</dt><dd>coyote (0.3109)</dd></div>
+              <div><dt>Margin</dt><dd>0.2659</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub169/FL-10_07_06_2016_FL-10_0020647.JPG" alt="Audit image FL-10_07_06_2016_FL-10_0020647.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-10_07_06_2016_FL-10_0020647.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5678</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.2600)</dd></div>
+              <div><dt>Margin</dt><dd>0.3079</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub267/FL-31_12_06_2015_FL-31_0029760.jpg" alt="Audit image FL-31_12_06_2015_FL-31_0029760.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-31_12_06_2015_FL-31_0029760.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5189</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.4515)</dd></div>
+              <div><dt>Margin</dt><dd>0.0673</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub243/FL-27_06_30_2015_FL-27_0016363.jpg" alt="Audit image FL-27_06_30_2015_FL-27_0016363.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-27_06_30_2015_FL-27_0016363.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5077</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.2046)</dd></div>
+              <div><dt>Margin</dt><dd>0.3031</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub237/FL-24_12_08_2015_FL-24_0052661.jpg" alt="Audit image FL-24_12_08_2015_FL-24_0052661.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-24_12_08_2015_FL-24_0052661.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.4838</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.2605)</dd></div>
+              <div><dt>Margin</dt><dd>0.2233</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub168/FL-09_11_02_2015_FL-09_0038001.jpg" alt="Audit image FL-09_11_02_2015_FL-09_0038001.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-09_11_02_2015_FL-09_0038001.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.4039</dd></div>
+              <div><dt>Top 2</dt><dd>coyote (0.2818)</dd></div>
+              <div><dt>Margin</dt><dd>0.1221</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub162/FL-08_08_04_2016_FL-08_0025386.JPG" alt="Audit image FL-08_08_04_2016_FL-08_0025386.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-08_08_04_2016_FL-08_0025386.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.3689</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.3382)</dd></div>
+              <div><dt>Margin</dt><dd>0.0307</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    </div>
+            </section>
+            
+            <section class="source-group">
+              <h2>empty_predicted_as_animal <span>25 examples</span></h2>
+              <div class="grid">
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub304/FL-04_0010014.jpg" alt="Audit image FL-04_0010014.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-04_0010014.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8156</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.0928)</dd></div>
+              <div><dt>Margin</dt><dd>0.7228</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub335/FL-16_0127011.JPG" alt="Audit image FL-16_0127011.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-16_0127011.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8036</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1108)</dd></div>
+              <div><dt>Margin</dt><dd>0.6927</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub305/FL-10_0015701.JPG" alt="Audit image FL-10_0015701.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-10_0015701.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7776</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.0604)</dd></div>
+              <div><dt>Margin</dt><dd>0.7172</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub319/CA-08_0003467.jpg" alt="Audit image CA-08_0003467.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-08_0003467.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7719</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1862)</dd></div>
+              <div><dt>Margin</dt><dd>0.5857</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub314/FL-25_0012413.jpg" alt="Audit image FL-25_0012413.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-25_0012413.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7696</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.0936)</dd></div>
+              <div><dt>Margin</dt><dd>0.6760</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub332/FL-20_0033911.JPG" alt="Audit image FL-20_0033911.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-20_0033911.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7629</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1514)</dd></div>
+              <div><dt>Margin</dt><dd>0.6115</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub306/FL-18_0020722.JPG" alt="Audit image FL-18_0020722.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-18_0020722.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6838</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1708)</dd></div>
+              <div><dt>Margin</dt><dd>0.5130</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub295/FL-11_0021564.JPG" alt="Audit image FL-11_0021564.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-11_0021564.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6798</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.0950)</dd></div>
+              <div><dt>Margin</dt><dd>0.5848</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub332/FL-20_0047411.JPG" alt="Audit image FL-20_0047411.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-20_0047411.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6452</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.3495)</dd></div>
+              <div><dt>Margin</dt><dd>0.2957</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub295/FL-11_0024279.JPG" alt="Audit image FL-11_0024279.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-11_0024279.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6352</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.2218)</dd></div>
+              <div><dt>Margin</dt><dd>0.4134</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub326/FL-19_0069384.JPG" alt="Audit image FL-19_0069384.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-19_0069384.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6204</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1391)</dd></div>
+              <div><dt>Margin</dt><dd>0.4813</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub314/FL-25_0029909.JPG" alt="Audit image FL-25_0029909.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-25_0029909.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6119</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1934)</dd></div>
+              <div><dt>Margin</dt><dd>0.4185</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub322/FL-13_0059671.jpg" alt="Audit image FL-13_0059671.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-13_0059671.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6117</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1299)</dd></div>
+              <div><dt>Margin</dt><dd>0.4817</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub313/FL-03_0049564.JPG" alt="Audit image FL-03_0049564.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-03_0049564.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6066</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.3004)</dd></div>
+              <div><dt>Margin</dt><dd>0.3062</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub327/FL-19_0006420.jpg" alt="Audit image FL-19_0006420.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-19_0006420.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6004</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.2101)</dd></div>
+              <div><dt>Margin</dt><dd>0.3902</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub315/CA-18_0028185.JPG" alt="Audit image CA-18_0028185.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-18_0028185.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>black_bear</dd></div>
+              <div><dt>Conf</dt><dd>0.5769</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1864)</dd></div>
+              <div><dt>Margin</dt><dd>0.3905</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub327/FL-19_0069056.JPG" alt="Audit image FL-19_0069056.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-19_0069056.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5740</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.3177)</dd></div>
+              <div><dt>Margin</dt><dd>0.2563</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub336/FL-16_0141929.JPG" alt="Audit image FL-16_0141929.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-16_0141929.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5718</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.4073)</dd></div>
+              <div><dt>Margin</dt><dd>0.1645</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub310/FL-08_0024057.JPG" alt="Audit image FL-08_0024057.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-08_0024057.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5615</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.2221)</dd></div>
+              <div><dt>Margin</dt><dd>0.3394</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub334/FL-16_0098430.jpg" alt="Audit image FL-16_0098430.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-16_0098430.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5389</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.2923)</dd></div>
+              <div><dt>Margin</dt><dd>0.2466</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub326/FL-02_0006326.jpg" alt="Audit image FL-02_0006326.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-02_0006326.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5284</dd></div>
+              <div><dt>Top 2</dt><dd>black_bear (0.2008)</dd></div>
+              <div><dt>Margin</dt><dd>0.3276</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub313/FL-25_0009004.jpg" alt="Audit image FL-25_0009004.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-25_0009004.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5218</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.3337)</dd></div>
+              <div><dt>Margin</dt><dd>0.1881</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub326/FL-19_0040641.jpg" alt="Audit image FL-19_0040641.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-19_0040641.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>coyote</dd></div>
+              <div><dt>Conf</dt><dd>0.5217</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.2650)</dd></div>
+              <div><dt>Margin</dt><dd>0.2567</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub317/CA-22_0001224.jpg" alt="Audit image CA-22_0001224.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-22_0001224.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>coyote</dd></div>
+              <div><dt>Conf</dt><dd>0.5194</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.3302)</dd></div>
+              <div><dt>Margin</dt><dd>0.1892</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub323/FL-09_0034453.jpg" alt="Audit image FL-09_0034453.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-09_0034453.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.5021</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.2231)</dd></div>
+              <div><dt>Margin</dt><dd>0.2790</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    </div>
+            </section>
+            
+            <section class="source-group">
+              <h2>false_empty <span>42 examples</span></h2>
+              <div class="grid">
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub177/FL-12_09_01_2016_FL-12_0073762.JPG" alt="Audit image FL-12_09_01_2016_FL-12_0073762.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-12_09_01_2016_FL-12_0073762.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.8200</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.0810)</dd></div>
+              <div><dt>Margin</dt><dd>0.7390</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub171/FL-11_08_04_2016_FL-11_0022295.JPG" alt="Audit image FL-11_08_04_2016_FL-11_0022295.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-11_08_04_2016_FL-11_0022295.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.7973</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0653)</dd></div>
+              <div><dt>Margin</dt><dd>0.7320</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub062/CA-20_10_13_2015_CA-20_0012508.jpg" alt="Audit image CA-20_10_13_2015_CA-20_0012508.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-20_10_13_2015_CA-20_0012508.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.7914</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0933)</dd></div>
+              <div><dt>Margin</dt><dd>0.6981</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub267/FL-32_06_03_2016_FL-32_0013404.JPG" alt="Audit image FL-32_06_03_2016_FL-32_0013404.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-32_06_03_2016_FL-32_0013404.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.7895</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.1051)</dd></div>
+              <div><dt>Margin</dt><dd>0.6843</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub066/CA-24_09_09_2016_CA-24_0021373.JPG" alt="Audit image CA-24_09_09_2016_CA-24_0021373.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-24_09_09_2016_CA-24_0021373.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.7844</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.0895)</dd></div>
+              <div><dt>Margin</dt><dd>0.6950</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub048/CA-13_10_05_2016_CA-13_0012069.JPG" alt="Audit image CA-13_10_05_2016_CA-13_0012069.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-13_10_05_2016_CA-13_0012069.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.7596</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1646)</dd></div>
+              <div><dt>Margin</dt><dd>0.5950</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub050/CA-16_10_11_2016_CA-16_0006441.JPG" alt="Audit image CA-16_10_11_2016_CA-16_0006441.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-16_10_11_2016_CA-16_0006441.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.7498</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.2160)</dd></div>
+              <div><dt>Margin</dt><dd>0.5338</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub107/CA-45_04_07_2016_CA-45_0013343.JPG" alt="Audit image CA-45_04_07_2016_CA-45_0013343.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-45_04_07_2016_CA-45_0013343.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.7182</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1895)</dd></div>
+              <div><dt>Margin</dt><dd>0.5287</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub285/FL-40_10_01_2015_FL-40_0000450.jpg" alt="Audit image FL-40_10_01_2015_FL-40_0000450.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-40_10_01_2015_FL-40_0000450.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.7077</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.2013)</dd></div>
+              <div><dt>Margin</dt><dd>0.5065</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub084/CA-32_08_17_2015_CA-32_0003040.jpg" alt="Audit image CA-32_08_17_2015_CA-32_0003040.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-32_08_17_2015_CA-32_0003040.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.7040</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1539)</dd></div>
+              <div><dt>Margin</dt><dd>0.5501</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub274/FL-35_08_15_2016_FL-35_0050401.JPG" alt="Audit image FL-35_08_15_2016_FL-35_0050401.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-35_08_15_2016_FL-35_0050401.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.6890</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.2918)</dd></div>
+              <div><dt>Margin</dt><dd>0.3972</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub276/FL-36_06_03_2016_FL-36_0021061.JPG" alt="Audit image FL-36_06_03_2016_FL-36_0021061.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-36_06_03_2016_FL-36_0021061.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.6633</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.2751)</dd></div>
+              <div><dt>Margin</dt><dd>0.3882</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub042/CA-09_08_13_2015_CA-09_0003284.jpg" alt="Audit image CA-09_08_13_2015_CA-09_0003284.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-09_08_13_2015_CA-09_0003284.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.6487</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1980)</dd></div>
+              <div><dt>Margin</dt><dd>0.4507</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub048/CA-13_08_12_2015_CA-13_0005982.jpg" alt="Audit image CA-13_08_12_2015_CA-13_0005982.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-13_08_12_2015_CA-13_0005982.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.6481</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.2383)</dd></div>
+              <div><dt>Margin</dt><dd>0.4099</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub110/FL-01_01_25_2016_FL-01_0043863.jpg" alt="Audit image FL-01_01_25_2016_FL-01_0043863.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-01_01_25_2016_FL-01_0043863.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.6358</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.1339)</dd></div>
+              <div><dt>Margin</dt><dd>0.5019</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub042/CA-08_10_14_2015_CA-08_0006191.jpg" alt="Audit image CA-08_10_14_2015_CA-08_0006191.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-08_10_14_2015_CA-08_0006191.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.6249</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1768)</dd></div>
+              <div><dt>Margin</dt><dd>0.4481</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub237/FL-25_05_02_2016_FL-25_0025866.JPG" alt="Audit image FL-25_05_02_2016_FL-25_0025866.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-25_05_02_2016_FL-25_0025866.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.6197</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.3618)</dd></div>
+              <div><dt>Margin</dt><dd>0.2579</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub095/CA-38_10_07_2015_CA-38_0023157.jpg" alt="Audit image CA-38_10_07_2015_CA-38_0023157.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-38_10_07_2015_CA-38_0023157.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.6183</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1544)</dd></div>
+              <div><dt>Margin</dt><dd>0.4639</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub049/CA-14_08_12_2015_CA-14_0002830.jpg" alt="Audit image CA-14_08_12_2015_CA-14_0002830.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-14_08_12_2015_CA-14_0002830.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5997</dd></div>
+              <div><dt>Top 2</dt><dd>black_bear (0.2143)</dd></div>
+              <div><dt>Margin</dt><dd>0.3854</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub208/FL-18_08_04_2016_FL-18_0026907.JPG" alt="Audit image FL-18_08_04_2016_FL-18_0026907.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-18_08_04_2016_FL-18_0026907.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5852</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.3419)</dd></div>
+              <div><dt>Margin</dt><dd>0.2433</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub239/FL-26_03_07_2016_FL-26_0025856.JPG" alt="Audit image FL-26_03_07_2016_FL-26_0025856.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-26_03_07_2016_FL-26_0025856.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5843</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.3636)</dd></div>
+              <div><dt>Margin</dt><dd>0.2207</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub073/CA-28_12_01_2015_CA-28_0013603.jpg" alt="Audit image CA-28_12_01_2015_CA-28_0013603.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-28_12_01_2015_CA-28_0013603.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5750</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1624)</dd></div>
+              <div><dt>Margin</dt><dd>0.4126</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub073/CA-28_10_16_2015_CA-28_0012666.jpg" alt="Audit image CA-28_10_16_2015_CA-28_0012666.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-28_10_16_2015_CA-28_0012666.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5531</dd></div>
+              <div><dt>Top 2</dt><dd>black_bear (0.3210)</dd></div>
+              <div><dt>Margin</dt><dd>0.2321</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub275/FL-35_11_03_2015_FL-35_0003523.jpg" alt="Audit image FL-35_11_03_2015_FL-35_0003523.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-35_11_03_2015_FL-35_0003523.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5502</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.3627)</dd></div>
+              <div><dt>Margin</dt><dd>0.1874</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub219/FL-21_12_08_2015_FL-21_0020682.jpg" alt="Audit image FL-21_12_08_2015_FL-21_0020682.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-21_12_08_2015_FL-21_0020682.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5444</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.4075)</dd></div>
+              <div><dt>Margin</dt><dd>0.1369</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub070/CA-27_09_16_2015_CA-27_0008025.jpg" alt="Audit image CA-27_09_16_2015_CA-27_0008025.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-27_09_16_2015_CA-27_0008025.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5274</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.3340)</dd></div>
+              <div><dt>Margin</dt><dd>0.1934</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub161/FL-08_03_07_2016_FL-08_0019003.JPG" alt="Audit image FL-08_03_07_2016_FL-08_0019003.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-08_03_07_2016_FL-08_0019003.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5262</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.2867)</dd></div>
+              <div><dt>Margin</dt><dd>0.2396</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub044/CA-10_08_13_2015_CA-10_0015341.jpg" alt="Audit image CA-10_08_13_2015_CA-10_0015341.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-10_08_13_2015_CA-10_0015341.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5255</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.3036)</dd></div>
+              <div><dt>Margin</dt><dd>0.2219</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub061/CA-20_08_13_2015_CA-20_0003906.jpg" alt="Audit image CA-20_08_13_2015_CA-20_0003906.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-20_08_13_2015_CA-20_0003906.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5220</dd></div>
+              <div><dt>Top 2</dt><dd>black_bear (0.3144)</dd></div>
+              <div><dt>Margin</dt><dd>0.2077</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub237/FL-25_05_02_2016_FL-25_0025503.JPG" alt="Audit image FL-25_05_02_2016_FL-25_0025503.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-25_05_02_2016_FL-25_0025503.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5104</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.4370)</dd></div>
+              <div><dt>Margin</dt><dd>0.0734</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub274/FL-35_07_06_2016_FL-35_0047954.JPG" alt="Audit image FL-35_07_06_2016_FL-35_0047954.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-35_07_06_2016_FL-35_0047954.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5064</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.2177)</dd></div>
+              <div><dt>Margin</dt><dd>0.2887</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub179/FL-13_04_04_2016_FL-13_0074572.JPG" alt="Audit image FL-13_04_04_2016_FL-13_0074572.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-13_04_04_2016_FL-13_0074572.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.5012</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.3437)</dd></div>
+              <div><dt>Margin</dt><dd>0.1575</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub082/CA-30_09_06_2016_CA-30_0059294.JPG" alt="Audit image CA-30_09_06_2016_CA-30_0059294.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-30_09_06_2016_CA-30_0059294.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.4975</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.3247)</dd></div>
+              <div><dt>Margin</dt><dd>0.1728</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub037/CA-04_06_06_2016_CA-04_0019014.JPG" alt="Audit image CA-04_06_06_2016_CA-04_0019014.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-04_06_06_2016_CA-04_0019014.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.4804</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.2080)</dd></div>
+              <div><dt>Margin</dt><dd>0.2723</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub265/FL-31_07_29_2015_FL-31_0021254.jpg" alt="Audit image FL-31_07_29_2015_FL-31_0021254.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-31_07_29_2015_FL-31_0021254.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.4682</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.2192)</dd></div>
+              <div><dt>Margin</dt><dd>0.2490</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub208/FL-19_03_07_2016_FL-19_0047708.JPG" alt="Audit image FL-19_03_07_2016_FL-19_0047708.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-19_03_07_2016_FL-19_0047708.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.4507</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.2539)</dd></div>
+              <div><dt>Margin</dt><dd>0.1968</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub277/FL-37_03_08_2016_FL-37_0008440.JPG" alt="Audit image FL-37_03_08_2016_FL-37_0008440.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-37_03_08_2016_FL-37_0008440.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.4196</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.3421)</dd></div>
+              <div><dt>Margin</dt><dd>0.0775</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub026/2016_Unit037_Ivan059_img0150.jpg" alt="Audit image 2016_Unit037_Ivan059_img0150.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit037_Ivan059_img0150.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.4159</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.3451)</dd></div>
+              <div><dt>Margin</dt><dd>0.0708</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub198/FL-16_11_02_2015_FL-16_0094524.jpg" alt="Audit image FL-16_11_02_2015_FL-16_0094524.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-16_11_02_2015_FL-16_0094524.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.4150</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.4089)</dd></div>
+              <div><dt>Margin</dt><dd>0.0061</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub102/CA-42_12_02_2015_CA-42_0012615.jpg" alt="Audit image CA-42_12_02_2015_CA-42_0012615.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-42_12_02_2015_CA-42_0012615.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.3476</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.3280)</dd></div>
+              <div><dt>Margin</dt><dd>0.0196</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub115/FL-01_06_29_2015_FL-01_0033270.jpg" alt="Audit image FL-01_06_29_2015_FL-01_0033270.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-01_06_29_2015_FL-01_0033270.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.3405</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.3169)</dd></div>
+              <div><dt>Margin</dt><dd>0.0237</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub050/CA-15_11_02_2015_CA-15_0008326.jpg" alt="Audit image CA-15_11_02_2015_CA-15_0008326.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-15_11_02_2015_CA-15_0008326.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.3307</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.2271)</dd></div>
+              <div><dt>Margin</dt><dd>0.1036</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    </div>
+            </section>
+            
+            <section class="source-group">
+              <h2>high_confidence_error <span>50 examples</span></h2>
+              <div class="grid">
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub029/2016_Unit097_Ivan072_img1656.jpg" alt="Audit image 2016_Unit097_Ivan072_img1656.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit097_Ivan072_img1656.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.9948</dd></div>
+              <div><dt>Top 2</dt><dd>coyote (0.0021)</dd></div>
+              <div><dt>Margin</dt><dd>0.9926</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub321/FL-13_0050248.jpg" alt="Audit image FL-13_0050248.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-13_0050248.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>wild_boar</dd></div>
+              <div><dt>Conf</dt><dd>0.9901</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.0083)</dd></div>
+              <div><dt>Margin</dt><dd>0.9819</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub042/CA-09_08_13_2015_CA-09_0003020.jpg" alt="Audit image CA-09_08_13_2015_CA-09_0003020.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-09_08_13_2015_CA-09_0003020.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.9845</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0094)</dd></div>
+              <div><dt>Margin</dt><dd>0.9751</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub085/CA-33_08_04_2015_CA-33_0011943.jpg" alt="Audit image CA-33_08_04_2015_CA-33_0011943.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-33_08_04_2015_CA-33_0011943.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.9822</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0114)</dd></div>
+              <div><dt>Margin</dt><dd>0.9708</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub025/2016_Unit028_SWTB009_img1604.jpg" alt="Audit image 2016_Unit028_SWTB009_img1604.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit028_SWTB009_img1604.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>black_bear</dd></div>
+              <div><dt>Conf</dt><dd>0.9797</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.0128)</dd></div>
+              <div><dt>Margin</dt><dd>0.9669</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub023/2015_Unit173_Ivan095_img0109.jpg" alt="Audit image 2015_Unit173_Ivan095_img0109.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2015_Unit173_Ivan095_img0109.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.9782</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.0143)</dd></div>
+              <div><dt>Margin</dt><dd>0.9639</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub001/2010_Unit154_Ivan111_img0241.jpg" alt="Audit image 2010_Unit154_Ivan111_img0241.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit154_Ivan111_img0241.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.9748</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.0145)</dd></div>
+              <div><dt>Margin</dt><dd>0.9604</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub050/CA-15_09_09_2016_CA-15_0012372.JPG" alt="Audit image CA-15_09_09_2016_CA-15_0012372.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-15_09_09_2016_CA-15_0012372.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.9736</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0202)</dd></div>
+              <div><dt>Margin</dt><dd>0.9534</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub179/FL-13_05_02_2016_FL-13_0076258.JPG" alt="Audit image FL-13_05_02_2016_FL-13_0076258.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-13_05_02_2016_FL-13_0076258.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.9734</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0189)</dd></div>
+              <div><dt>Margin</dt><dd>0.9545</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub000/2010_Unit150_Ivan100_img0178.jpg" alt="Audit image 2010_Unit150_Ivan100_img0178.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit150_Ivan100_img0178.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>coyote</dd></div>
+              <div><dt>Conf</dt><dd>0.9676</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.0285)</dd></div>
+              <div><dt>Margin</dt><dd>0.9391</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub050/CA-15_10_05_2016_CA-15_0018117.JPG" alt="Audit image CA-15_10_05_2016_CA-15_0018117.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-15_10_05_2016_CA-15_0018117.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.9632</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0195)</dd></div>
+              <div><dt>Margin</dt><dd>0.9437</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub031/2016_Unit160_Ivan070_img0091.jpg" alt="Audit image 2016_Unit160_Ivan070_img0091.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit160_Ivan070_img0091.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.9587</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.0385)</dd></div>
+              <div><dt>Margin</dt><dd>0.9202</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub038/CA-05_03_03_2015_CA-05_0000169.jpg" alt="Audit image CA-05_03_03_2015_CA-05_0000169.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-05_03_03_2015_CA-05_0000169.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.9586</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0179)</dd></div>
+              <div><dt>Margin</dt><dd>0.9407</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub036/CA-04_05_04_2016_CA-04_0013344.JPG" alt="Audit image CA-04_05_04_2016_CA-04_0013344.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-04_05_04_2016_CA-04_0013344.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>wild_boar</dd></div>
+              <div><dt>Conf</dt><dd>0.9515</dd></div>
+              <div><dt>Top 2</dt><dd>black_bear (0.0479)</dd></div>
+              <div><dt>Margin</dt><dd>0.9036</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub199/FL-17_01_20_2016_FL-17_0064379.jpg" alt="Audit image FL-17_01_20_2016_FL-17_0064379.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-17_01_20_2016_FL-17_0064379.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.9498</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.0390)</dd></div>
+              <div><dt>Margin</dt><dd>0.9108</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub032/2016_Unit189_Ivan020_img0256.jpg" alt="Audit image 2016_Unit189_Ivan020_img0256.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit189_Ivan020_img0256.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.9496</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.0494)</dd></div>
+              <div><dt>Margin</dt><dd>0.9002</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub128/FL-04_05_02_2016_FL-04_0019826.JPG" alt="Audit image FL-04_05_02_2016_FL-04_0019826.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-04_05_02_2016_FL-04_0019826.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.9472</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.0356)</dd></div>
+              <div><dt>Margin</dt><dd>0.9116</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub225/FL-22_06_02_2016_FL-22_0105438.JPG" alt="Audit image FL-22_06_02_2016_FL-22_0105438.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-22_06_02_2016_FL-22_0105438.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.9451</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0255)</dd></div>
+              <div><dt>Margin</dt><dd>0.9196</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub019/2015_Unit028_SWTB001_img0793.jpg" alt="Audit image 2015_Unit028_SWTB001_img0793.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2015_Unit028_SWTB001_img0793.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.9405</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.0189)</dd></div>
+              <div><dt>Margin</dt><dd>0.9217</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub029/2016_Unit102_SWTB021_img0218.jpg" alt="Audit image 2016_Unit102_SWTB021_img0218.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit102_SWTB021_img0218.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.9345</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.0586)</dd></div>
+              <div><dt>Margin</dt><dd>0.8759</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub335/FL-16_0119231.JPG" alt="Audit image FL-16_0119231.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-16_0119231.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.9312</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.0521)</dd></div>
+              <div><dt>Margin</dt><dd>0.8791</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub169/FL-09_11_02_2015_FL-09_0038733.jpg" alt="Audit image FL-09_11_02_2015_FL-09_0038733.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-09_11_02_2015_FL-09_0038733.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.9278</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0396)</dd></div>
+              <div><dt>Margin</dt><dd>0.8883</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub284/FL-40_06_03_2016_FL-40_0018687.JPG" alt="Audit image FL-40_06_03_2016_FL-40_0018687.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-40_06_03_2016_FL-40_0018687.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>coyote</dd></div>
+              <div><dt>Conf</dt><dd>0.9251</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.0567)</dd></div>
+              <div><dt>Margin</dt><dd>0.8684</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub251/FL-29_03_07_2016_FL-29_0055285.JPG" alt="Audit image FL-29_03_07_2016_FL-29_0055285.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-29_03_07_2016_FL-29_0055285.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.9198</dd></div>
+              <div><dt>Top 2</dt><dd>coyote (0.0402)</dd></div>
+              <div><dt>Margin</dt><dd>0.8796</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub134/FL-05_07_28_2015_FL-05_0022853.jpg" alt="Audit image FL-05_07_28_2015_FL-05_0022853.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-05_07_28_2015_FL-05_0022853.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.9153</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0609)</dd></div>
+              <div><dt>Margin</dt><dd>0.8544</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub038/CA-04_09_09_2016_CA-04_0022772.JPG" alt="Audit image CA-04_09_09_2016_CA-04_0022772.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-04_09_09_2016_CA-04_0022772.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.9142</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0310)</dd></div>
+              <div><dt>Margin</dt><dd>0.8832</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub023/2015_Unit189_Ivan088_img0051.jpg" alt="Audit image 2015_Unit189_Ivan088_img0051.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2015_Unit189_Ivan088_img0051.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>coyote</dd></div>
+              <div><dt>Conf</dt><dd>0.9136</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.0593)</dd></div>
+              <div><dt>Margin</dt><dd>0.8543</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub281/FL-38_03_07_2016_FL-38_0030022.JPG" alt="Audit image FL-38_03_07_2016_FL-38_0030022.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-38_03_07_2016_FL-38_0030022.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.9096</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.0317)</dd></div>
+              <div><dt>Margin</dt><dd>0.8779</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub279/FL-37_09_08_2016_FL-37_0028630.JPG" alt="Audit image FL-37_09_08_2016_FL-37_0028630.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-37_09_08_2016_FL-37_0028630.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.9039</dd></div>
+              <div><dt>Top 2</dt><dd>coyote (0.0365)</dd></div>
+              <div><dt>Margin</dt><dd>0.8675</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub030/2016_Unit110_Ivan129_img0814.jpg" alt="Audit image 2016_Unit110_Ivan129_img0814.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit110_Ivan129_img0814.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.9031</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.0864)</dd></div>
+              <div><dt>Margin</dt><dd>0.8168</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub219/FL-21_11_02_2015_FL-21_0020357.jpg" alt="Audit image FL-21_11_02_2015_FL-21_0020357.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-21_11_02_2015_FL-21_0020357.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>raccoon</dd></div>
+              <div><dt>Pred</dt><dd>empty</dd></div>
+              <div><dt>Conf</dt><dd>0.8991</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.0944)</dd></div>
+              <div><dt>Margin</dt><dd>0.8048</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub001/2010_Unit154_Ivan111_img3187.jpg" alt="Audit image 2010_Unit154_Ivan111_img3187.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit154_Ivan111_img3187.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.8912</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.0575)</dd></div>
+              <div><dt>Margin</dt><dd>0.8337</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub011/2014_Unit164_Ivan084_img0333.jpg" alt="Audit image 2014_Unit164_Ivan084_img0333.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit164_Ivan084_img0333.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.8804</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.1007)</dd></div>
+              <div><dt>Margin</dt><dd>0.7797</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub036/CA-04_05_04_2016_CA-04_0015403.JPG" alt="Audit image CA-04_05_04_2016_CA-04_0015403.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-04_05_04_2016_CA-04_0015403.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8781</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1198)</dd></div>
+              <div><dt>Margin</dt><dd>0.7583</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub208/FL-18_12_08_2015_FL-18_0016892.jpg" alt="Audit image FL-18_12_08_2015_FL-18_0016892.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-18_12_08_2015_FL-18_0016892.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8714</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1077)</dd></div>
+              <div><dt>Margin</dt><dd>0.7636</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub011/2014_Unit120_SWTB008_img1148.jpg" alt="Audit image 2014_Unit120_SWTB008_img1148.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit120_SWTB008_img1148.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.8691</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.0892)</dd></div>
+              <div><dt>Margin</dt><dd>0.7799</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub307/FL-06_0034875.JPG" alt="Audit image FL-06_0034875.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-06_0034875.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8664</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1168)</dd></div>
+              <div><dt>Margin</dt><dd>0.7496</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub084/CA-33_06_02_2016_CA-33_0026017.JPG" alt="Audit image CA-33_06_02_2016_CA-33_0026017.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-33_06_02_2016_CA-33_0026017.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>wild_boar</dd></div>
+              <div><dt>Conf</dt><dd>0.8619</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.0964)</dd></div>
+              <div><dt>Margin</dt><dd>0.7655</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub057/CA-18_08_03_2015_CA-18_0011743.jpg" alt="Audit image CA-18_08_03_2015_CA-18_0011743.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-18_08_03_2015_CA-18_0011743.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>bobcat</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8619</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0754)</dd></div>
+              <div><dt>Margin</dt><dd>0.7865</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub062/CA-22_02_11_2016_CA-22_0013644.jpg" alt="Audit image CA-22_02_11_2016_CA-22_0013644.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-22_02_11_2016_CA-22_0013644.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>bobcat</dd></div>
+              <div><dt>Conf</dt><dd>0.8578</dd></div>
+              <div><dt>Top 2</dt><dd>raccoon (0.0852)</dd></div>
+              <div><dt>Margin</dt><dd>0.7726</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub305/FL-10_0013459.JPG" alt="Audit image FL-10_0013459.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-10_0013459.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8535</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.0606)</dd></div>
+              <div><dt>Margin</dt><dd>0.7929</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub018/2015_Unit006_Ivan137_img0027.jpg" alt="Audit image 2015_Unit006_Ivan137_img0027.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2015_Unit006_Ivan137_img0027.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.8521</dd></div>
+              <div><dt>Top 2</dt><dd>coyote (0.1125)</dd></div>
+              <div><dt>Margin</dt><dd>0.7397</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub016/2014_Unit70_Ivan140_img2133.jpg" alt="Audit image 2014_Unit70_Ivan140_img2133.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit70_Ivan140_img2133.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>black_bear</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.8512</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.1439)</dd></div>
+              <div><dt>Margin</dt><dd>0.7073</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part3/sub304/FL-04_0001098.jpg" alt="Audit image FL-04_0001098.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-04_0001098.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>empty</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8479</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1478)</dd></div>
+              <div><dt>Margin</dt><dd>0.7001</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub035/CA-03_08_13_2015_CA-03_0010989.jpg" alt="Audit image CA-03_08_13_2015_CA-03_0010989.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-03_08_13_2015_CA-03_0010989.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>bobcat</dd></div>
+              <div><dt>Conf</dt><dd>0.8387</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1329)</dd></div>
+              <div><dt>Margin</dt><dd>0.7058</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub002/2010_Unit157_Ivan108_img0258.jpg" alt="Audit image 2010_Unit157_Ivan108_img0258.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit157_Ivan108_img0258.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.8316</dd></div>
+              <div><dt>Top 2</dt><dd>coyote (0.0860)</dd></div>
+              <div><dt>Margin</dt><dd>0.7456</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub026/2016_Unit031_Ivan077_img1073.jpg" alt="Audit image 2016_Unit031_Ivan077_img1073.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit031_Ivan077_img1073.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>coyote</dd></div>
+              <div><dt>Conf</dt><dd>0.8313</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.1447)</dd></div>
+              <div><dt>Margin</dt><dd>0.6866</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub289/FL-42_12_08_2015_FL-42_0004254.jpg" alt="Audit image FL-42_12_08_2015_FL-42_0004254.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-42_12_08_2015_FL-42_0004254.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8284</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.0697)</dd></div>
+              <div><dt>Margin</dt><dd>0.7586</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub263/FL-31_05_03_2016_FL-31_0051847.JPG" alt="Audit image FL-31_05_03_2016_FL-31_0051847.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-31_05_03_2016_FL-31_0051847.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8248</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1712)</dd></div>
+              <div><dt>Margin</dt><dd>0.6537</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub190/FL-16_05_02_2016_FL-16_0120540.JPG" alt="Audit image FL-16_05_02_2016_FL-16_0120540.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-16_05_02_2016_FL-16_0120540.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>coyote</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8214</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1332)</dd></div>
+              <div><dt>Margin</dt><dd>0.6883</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    </div>
+            </section>
+            
+            <section class="source-group">
+              <h2>mule_deer_to_red_deer <span>14 examples</span></h2>
+              <div class="grid">
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub030/2016_Unit129_Ivan109_img0047.jpg" alt="Audit image 2016_Unit129_Ivan109_img0047.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit129_Ivan109_img0047.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7809</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.2119)</dd></div>
+              <div><dt>Margin</dt><dd>0.5690</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub000/2010_Unit152_Ivan090_img0291.jpg" alt="Audit image 2010_Unit152_Ivan090_img0291.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit152_Ivan090_img0291.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7737</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.2129)</dd></div>
+              <div><dt>Margin</dt><dd>0.5608</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub012/2014_Unit170_Ivan101_img0569.jpg" alt="Audit image 2014_Unit170_Ivan101_img0569.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit170_Ivan101_img0569.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7687</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.2018)</dd></div>
+              <div><dt>Margin</dt><dd>0.5669</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub015/2014_Unit58_Ivan061_img0048.jpg" alt="Audit image 2014_Unit58_Ivan061_img0048.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit58_Ivan061_img0048.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7652</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.2181)</dd></div>
+              <div><dt>Margin</dt><dd>0.5471</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub028/2016_Unit074_Ivan092_img4814.jpg" alt="Audit image 2016_Unit074_Ivan092_img4814.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit074_Ivan092_img4814.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7599</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.2369)</dd></div>
+              <div><dt>Margin</dt><dd>0.5230</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub017/2014_Unit97_Ivan093_img2579.jpg" alt="Audit image 2014_Unit97_Ivan093_img2579.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit97_Ivan093_img2579.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7200</dd></div>
+              <div><dt>Top 2</dt><dd>coyote (0.1710)</dd></div>
+              <div><dt>Margin</dt><dd>0.5490</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub021/2015_Unit097_Ivan075_img1511.jpg" alt="Audit image 2015_Unit097_Ivan075_img1511.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2015_Unit097_Ivan075_img1511.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7093</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.1833)</dd></div>
+              <div><dt>Margin</dt><dd>0.5260</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub030/2016_Unit104_Ivan103_img0037.jpg" alt="Audit image 2016_Unit104_Ivan103_img0037.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit104_Ivan103_img0037.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6776</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.3207)</dd></div>
+              <div><dt>Margin</dt><dd>0.3570</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub009/2010_Unit182_Ivan091_img0363.jpg" alt="Audit image 2010_Unit182_Ivan091_img0363.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit182_Ivan091_img0363.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6620</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.3342)</dd></div>
+              <div><dt>Margin</dt><dd>0.3278</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub000/2010_Unit152_Ivan040_img1511.jpg" alt="Audit image 2010_Unit152_Ivan040_img1511.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit152_Ivan040_img1511.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6439</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.3559)</dd></div>
+              <div><dt>Margin</dt><dd>0.2881</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub009/2010_Unit182_Ivan096_img0489.jpg" alt="Audit image 2010_Unit182_Ivan096_img0489.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit182_Ivan096_img0489.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6090</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.3719)</dd></div>
+              <div><dt>Margin</dt><dd>0.2371</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub022/2015_Unit160_Ivan079_img0890.jpg" alt="Audit image 2015_Unit160_Ivan079_img0890.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2015_Unit160_Ivan079_img0890.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.5778</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.4123)</dd></div>
+              <div><dt>Margin</dt><dd>0.1655</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub021/2015_Unit074_Ivan125_img1949.jpg" alt="Audit image 2015_Unit074_Ivan125_img1949.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2015_Unit074_Ivan125_img1949.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.5711</dd></div>
+              <div><dt>Top 2</dt><dd>coyote (0.1794)</dd></div>
+              <div><dt>Margin</dt><dd>0.3917</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub008/2010_Unit181_Ivan067_img1150.jpg" alt="Audit image 2010_Unit181_Ivan067_img1150.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit181_Ivan067_img1150.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>mule_deer</dd></div>
+              <div><dt>Pred</dt><dd>red_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.5523</dd></div>
+              <div><dt>Top 2</dt><dd>mule_deer (0.2789)</dd></div>
+              <div><dt>Margin</dt><dd>0.2734</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    </div>
+            </section>
+            
+            <section class="source-group">
+              <h2>red_deer_to_mule_deer <span>17 examples</span></h2>
+              <div class="grid">
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub022/2015_Unit160_Ivan093_img1632.jpg" alt="Audit image 2015_Unit160_Ivan093_img1632.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2015_Unit160_Ivan093_img1632.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.8173</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.1413)</dd></div>
+              <div><dt>Margin</dt><dd>0.6760</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub001/2010_Unit154_Ivan111_img2798.jpg" alt="Audit image 2010_Unit154_Ivan111_img2798.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit154_Ivan111_img2798.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.8041</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.1733)</dd></div>
+              <div><dt>Margin</dt><dd>0.6308</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub010/2014_Unit112_Ivan115_img0128.jpg" alt="Audit image 2014_Unit112_Ivan115_img0128.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit112_Ivan115_img0128.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7859</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.2017)</dd></div>
+              <div><dt>Margin</dt><dd>0.5842</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub025/2016_Unit021_Ivan051_img0958.jpg" alt="Audit image 2016_Unit021_Ivan051_img0958.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit021_Ivan051_img0958.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7654</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.2241)</dd></div>
+              <div><dt>Margin</dt><dd>0.5413</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub013/2014_Unit1_Ivan114_img0426.jpg" alt="Audit image 2014_Unit1_Ivan114_img0426.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit1_Ivan114_img0426.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7448</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.2459)</dd></div>
+              <div><dt>Margin</dt><dd>0.4989</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub012/2014_Unit178_Ivan039_img0162.jpg" alt="Audit image 2014_Unit178_Ivan039_img0162.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit178_Ivan039_img0162.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7270</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.2626)</dd></div>
+              <div><dt>Margin</dt><dd>0.4644</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub012/2014_Unit189_Ivan007_img0109.jpg" alt="Audit image 2014_Unit189_Ivan007_img0109.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit189_Ivan007_img0109.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.7075</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.1859)</dd></div>
+              <div><dt>Margin</dt><dd>0.5216</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub010/2014_Unit112_Ivan109_img0485.jpg" alt="Audit image 2014_Unit112_Ivan109_img0485.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit112_Ivan109_img0485.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6794</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.3144)</dd></div>
+              <div><dt>Margin</dt><dd>0.3650</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub030/2016_Unit112_Ivan118_img0540.jpg" alt="Audit image 2016_Unit112_Ivan118_img0540.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit112_Ivan118_img0540.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6695</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.2996)</dd></div>
+              <div><dt>Margin</dt><dd>0.3700</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub025/2016_Unit021_Ivan051_img0744.jpg" alt="Audit image 2016_Unit021_Ivan051_img0744.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit021_Ivan051_img0744.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6608</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.2416)</dd></div>
+              <div><dt>Margin</dt><dd>0.4191</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub020/2015_Unit058_Ivan042_img1082.jpg" alt="Audit image 2015_Unit058_Ivan042_img1082.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2015_Unit058_Ivan042_img1082.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6488</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.3286)</dd></div>
+              <div><dt>Margin</dt><dd>0.3202</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub004/2010_Unit162_Ivan079_img1503.jpg" alt="Audit image 2010_Unit162_Ivan079_img1503.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit162_Ivan079_img1503.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6477</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.3400)</dd></div>
+              <div><dt>Margin</dt><dd>0.3078</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub024/2016_Unit009_Ivan143_img0387.jpg" alt="Audit image 2016_Unit009_Ivan143_img0387.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2016_Unit009_Ivan143_img0387.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6439</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.3514)</dd></div>
+              <div><dt>Margin</dt><dd>0.2925</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub011/2014_Unit160_Ivan092_img0826.jpg" alt="Audit image 2014_Unit160_Ivan092_img0826.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit160_Ivan092_img0826.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6215</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.3674)</dd></div>
+              <div><dt>Margin</dt><dd>0.2541</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub020/2015_Unit074_Ivan117_img0847.jpg" alt="Audit image 2015_Unit074_Ivan117_img0847.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2015_Unit074_Ivan117_img0847.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.6122</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.3811)</dd></div>
+              <div><dt>Margin</dt><dd>0.2311</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub013/2014_Unit1_Ivan114_img1013.jpg" alt="Audit image 2014_Unit1_Ivan114_img1013.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2014_Unit1_Ivan114_img1013.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.5879</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.3850)</dd></div>
+              <div><dt>Margin</dt><dd>0.2029</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub002/2010_Unit157_Ivan108_img0372.jpg" alt="Audit image 2010_Unit157_Ivan108_img0372.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#2010_Unit157_Ivan108_img0372.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>red_deer</dd></div>
+              <div><dt>Pred</dt><dd>mule_deer</dd></div>
+              <div><dt>Conf</dt><dd>0.5581</dd></div>
+              <div><dt>Top 2</dt><dd>red_deer (0.3882)</dd></div>
+              <div><dt>Margin</dt><dd>0.1698</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    </div>
+            </section>
+            
+            <section class="source-group">
+              <h2>wild_boar_to_raccoon <span>15 examples</span></h2>
+              <div class="grid">
+        <article class="card">
+          <img src="../data/processed/cropped_images/part0/sub041/CA-08_04_01_2015_CA-08_0000808.jpg" alt="Audit image CA-08_04_01_2015_CA-08_0000808.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#CA-08_04_01_2015_CA-08_0000808.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8181</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.1263)</dd></div>
+              <div><dt>Margin</dt><dd>0.6917</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub241/FL-27_06_02_2015_FL-27_0001063.jpg" alt="Audit image FL-27_06_02_2015_FL-27_0001063.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-27_06_02_2015_FL-27_0001063.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.8160</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.0994)</dd></div>
+              <div><dt>Margin</dt><dd>0.7166</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub259/FL-30_06_03_2015_FL-30_0001398.jpg" alt="Audit image FL-30_06_03_2015_FL-30_0001398.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-30_06_03_2015_FL-30_0001398.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7710</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1193)</dd></div>
+              <div><dt>Margin</dt><dd>0.6517</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub245/FL-27_09_02_2016_FL-27_0071821.JPG" alt="Audit image FL-27_09_02_2016_FL-27_0071821.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-27_09_02_2016_FL-27_0071821.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7661</dd></div>
+              <div><dt>Top 2</dt><dd>bobcat (0.0764)</dd></div>
+              <div><dt>Margin</dt><dd>0.6897</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub290/FL-44_04_05_2016_FL-44_0003531.JPG" alt="Audit image FL-44_04_05_2016_FL-44_0003531.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-44_04_05_2016_FL-44_0003531.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7365</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.2243)</dd></div>
+              <div><dt>Margin</dt><dd>0.5122</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub230/FL-23_05_02_2016_FL-23_0020665.JPG" alt="Audit image FL-23_05_02_2016_FL-23_0020665.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-23_05_02_2016_FL-23_0020665.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7239</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.2649)</dd></div>
+              <div><dt>Margin</dt><dd>0.4590</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub193/FL-16_06_02_2015_FL-16_0020947.jpg" alt="Audit image FL-16_06_02_2015_FL-16_0020947.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-16_06_02_2015_FL-16_0020947.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7210</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.2541)</dd></div>
+              <div><dt>Margin</dt><dd>0.4669</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub240/FL-27_01_21_2016_FL-27_0045577.jpg" alt="Audit image FL-27_01_21_2016_FL-27_0045577.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-27_01_21_2016_FL-27_0045577.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7183</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1233)</dd></div>
+              <div><dt>Margin</dt><dd>0.5950</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub221/FL-22_04_05_2016_FL-22_0094236.JPG" alt="Audit image FL-22_04_05_2016_FL-22_0094236.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-22_04_05_2016_FL-22_0094236.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7175</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1554)</dd></div>
+              <div><dt>Margin</dt><dd>0.5621</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub126/FL-03_06_30_2015_FL-03_0019783.jpg" alt="Audit image FL-03_06_30_2015_FL-03_0019783.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-03_06_30_2015_FL-03_0019783.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7129</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.2363)</dd></div>
+              <div><dt>Margin</dt><dd>0.4766</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub213/FL-19_09_01_2016_FL-19_0066167.JPG" alt="Audit image FL-19_09_01_2016_FL-19_0066167.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-19_09_01_2016_FL-19_0066167.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7083</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1081)</dd></div>
+              <div><dt>Margin</dt><dd>0.6002</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub218/FL-21_07_29_2015_FL-21_0014351.jpg" alt="Audit image FL-21_07_29_2015_FL-21_0014351.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-21_07_29_2015_FL-21_0014351.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.7061</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.1721)</dd></div>
+              <div><dt>Margin</dt><dd>0.5340</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part1/sub182/FL-13_07_05_2016_FL-13_0084729.JPG" alt="Audit image FL-13_07_05_2016_FL-13_0084729.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-13_07_05_2016_FL-13_0084729.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6972</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.2539)</dd></div>
+              <div><dt>Margin</dt><dd>0.4433</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub259/FL-30_06_03_2015_FL-30_0008579.jpg" alt="Audit image FL-30_06_03_2015_FL-30_0008579.jpg" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-30_06_03_2015_FL-30_0008579.jpg</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6908</dd></div>
+              <div><dt>Top 2</dt><dd>empty (0.1406)</dd></div>
+              <div><dt>Margin</dt><dd>0.5502</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    
+
+        <article class="card">
+          <img src="../data/processed/cropped_images/part2/sub277/FL-37_04_04_2016_FL-37_0009819.JPG" alt="Audit image FL-37_04_04_2016_FL-37_0009819.JPG" loading="lazy">
+          <div class="content">
+            <div class="audit-id">#FL-37_04_04_2016_FL-37_0009819.JPG</div>
+            <dl class="meta">
+              <div><dt>True</dt><dd>wild_boar</dd></div>
+              <div><dt>Pred</dt><dd>raccoon</dd></div>
+              <div><dt>Conf</dt><dd>0.6790</dd></div>
+              <div><dt>Top 2</dt><dd>wild_boar (0.2027)</dd></div>
+              <div><dt>Margin</dt><dd>0.4763</dd></div>
+            </dl>
+            <div class="annotation">
+              <div><span>audit_tag</span><strong>&mdash;</strong></div>
+              <div><span>animal_visible</span><strong>&mdash;</strong></div>
+              <div><span>notes</span><strong>&mdash;</strong></div>
+            </div>
+          </div>
+        </article>
+    </div>
+            </section>
+            
+  </main>
+</body>
+</html>

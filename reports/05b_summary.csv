@@ -1,0 +1,4 @@
+section,result
+validation,"accuracy=0.7217, macro_f1=0.7249"
+lighting,"grayscale_or_ir: n=182, acc=0.648; night_or_low_light: n=542, acc=0.703; uncertain: n=114, acc=0.719; day_or_normal_light: n=362, acc=0.787"
+detector,animal_labeled_detector_finds_none: n=49; empty_labeled_detector_finds_animal: n=19; mobile_errors_detector_finds_animal: n=268; mobile_errors_detector_finds_none: n=66
